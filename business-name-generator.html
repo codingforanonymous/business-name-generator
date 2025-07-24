@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sele(ask, k, p) {
+            let r = Math.random()
+            if (p.check == 0) {
+                if (r > 0.5) {
+                    p[k] = ask
+                    p.check = p.check + 1
+                }
+            }
+        }
+        function add_name(j, set, p) {
+            for (let i = 0; i < j; i++) {
+                let w = prompt("Enter the word:")
+                if ((i == j - 1) && (p.check == 0)) {
+                    p[set] = w
+                    return;
+                }
+                sele(w, set, p);
+            }
+            p.check = 0
+            return p.check;
+        }
+        let np = {
+            check: 0,
+            s1: "A",
+            s2: "B",
+            s3: "C"
+        };
+        alert("welcome to name generator give 3 sets of words out ofwhich your company's name will be given")
+        let a = parseInt(prompt("how many words you want to put in set 1"))
+        add_name(a, "s1", np);
+        let b = parseInt(prompt("how many words you want to put in set 2"))
+        add_name(b, "s2", np);
+        let c = parseInt(prompt("how many words you want to put in set 3"))
+        add_name(c, "s3", np);
+        let atr = `${np.s1}${np.s2}${np.s3}`
+        document.body.innerHTML += `<h2>Your company's name is: ${atr}</h2>`;
+    </script>
+</body>
+
+</html>
